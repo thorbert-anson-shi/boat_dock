@@ -20,19 +20,21 @@ function App() {
 
   return (
     <>
-      <div className="hero">
-        <h1>waves</h1>
-        <h5>Manage your ships and make sure they're in ship shape!</h5>
-      </div>
-      <InfoPanel />
-      <div className="bg">
-        <div className="container text-left">
-          <div className="row row-cols-12 justify-content-center">
-            {items.map((item) => (
-              <div className="col-md-3" key={item.toLowerCase()}>
-                <Panel title={item.toUpperCase()}>{item}</Panel>
-              </div>
-            ))}
+      <div className="parallax">
+        <div className="hero parallax__layer--back">
+          <h1>waves</h1>
+          <h5>Manage your ships and make sure they're in ship shape!</h5>
+        </div>
+        <InfoPanel />
+        <div className="bg parallax__layer--base">
+          <div className="container text-left">
+            <div className="row row-cols-12 justify-content-center">
+              {items.map((item) => (
+                <div className="col-md-3" key={item.toLowerCase()}>
+                  <Panel title={item.toUpperCase()}>{item}</Panel>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

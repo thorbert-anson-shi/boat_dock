@@ -7,7 +7,6 @@
     padding: 5rem;
     background: linear-gradient(90deg, #6060bd 10%, #5050bd 50%, #6060bd 90%);
     color: white;
-    z-index: 0;
 }
 
 .parallax {
@@ -30,7 +29,7 @@
 }
 
 .parallax__layer--back {
-    transform: translateZ(-1px) scale(2);
+    transform: translateY(-35vh) translateZ(-1px) scale(2);
 }
 
 .row {

@@ -40,6 +40,7 @@ const Panel = ({ children, title = "-" }: Props) => {
                 Edit
               </button>
             )}
+            <button className="btn btn-primary">Delete</button>
           </div>
         </div>
       </div>

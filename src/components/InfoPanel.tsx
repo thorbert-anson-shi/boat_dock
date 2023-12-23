@@ -1,3 +1,4 @@
+import getShipList from "../assets/api_calls.js";
 const InfoPanel = () => {
   return (
     <div
@@ -29,7 +30,11 @@ const InfoPanel = () => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={getShipList}
+            >
               Save changes
             </button>
           </div>

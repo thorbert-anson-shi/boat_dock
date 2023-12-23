@@ -1,11 +1,13 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 
 interface Props {
-  children: ReactNode;
-  title: string;
+  name: string;
+  bought_at: string;
+  updated_at: string;
+  description: string;
 }
 
-const Panel = ({ children, title = "-" }: Props) => {
+const Panel = (props: Props) => {
   const [buttonText, setButtonText] = useState("Send");
   const [isSailing, setAvailability] = useState(true);
 
@@ -14,10 +16,16 @@ const Panel = ({ children, title = "-" }: Props) => {
       <div className="card align-items-center">
         <div className="card-body">
           <div className="card-title">
-            <h5>{title}</h5>
+            <h5>{props.name}</h5>
           </div>
 
-          <p>{children}</p>
+          <div className="boat-info">
+            <ul>
+              <li>Bought at: {props.bought_at}</li>
+              <li>Updated at: {props.updated_at}</li>
+              <li>Description: {props.description}</li>
+            </ul>
+          </div>
 
           <div className="btn-group" role="group">
             <button
@@ -35,7 +43,7 @@ const Panel = ({ children, title = "-" }: Props) => {
                 className="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                data-bs-whatever={title.slice(0, 5)}
+                data-bs-whatever={props.name.slice(0, 5)}
               >
                 Edit
               </button>

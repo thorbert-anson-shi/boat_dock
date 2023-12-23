@@ -7,15 +7,12 @@ import InfoPanel from "./components/InfoPanel";
 
 function App() {
   let items = [
-    "thorbert",
-    "anson",
-    "shi",
-    "tober",
-    "ski",
-    "helohelo",
-    "haihai",
-    "felicia",
-    "alana",
+    {
+      name: "Thorbert",
+      bought_at: "24/5/2005",
+      updated_at: "30/4/2023",
+      description: "big phat boat",
+    },
   ];
 
   return (
@@ -46,8 +43,13 @@ function App() {
           <div className="container text-left">
             <div className="row row-cols-12 justify-content-center">
               {items.map((item) => (
-                <div className="col-md-3" key={item.toLowerCase()}>
-                  <Panel title={item.toUpperCase()}>{item}</Panel>
+                <div className="col-md-3" key={item.name.toLowerCase()}>
+                  <Panel
+                    name={item.name.toUpperCase()}
+                    bought_at={item.bought_at}
+                    updated_at={item.updated_at}
+                    description={item.description}
+                  ></Panel>
                 </div>
               ))}
             </div>

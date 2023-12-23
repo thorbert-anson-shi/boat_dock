@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   name: string;
@@ -9,11 +9,14 @@ interface Props {
 
 const Panel = (props: Props) => {
   const [buttonText, setButtonText] = useState("Send");
-  const [isSailing, setAvailability] = useState(true);
+  const [isSailing, setAvailability] = useState(false);
 
   return (
     <>
-      <div className="card align-items-center">
+      <div
+        className="card align-items-center"
+        style={{ backgroundColor: isSailing ? "red" : "#6060bd" }}
+      >
         <div className="card-body">
           <div className="card-title">
             <h5>{props.name}</h5>
@@ -32,23 +35,25 @@ const Panel = (props: Props) => {
               className="btn btn-primary"
               onClick={() => {
                 setAvailability(!isSailing);
-                setButtonText(isSailing ? "Retrieve" : "Send");
+                setButtonText(!isSailing ? "Retrieve" : "Send");
               }}
             >
               {buttonText}
             </button>
-            {isSailing && (
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-whatever={props.name.slice(0, 5)}
-              >
-                Edit
-              </button>
+            {!isSailing && (
+              <>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever={props.name.slice(0, 5)}
+                >
+                  Edit
+                </button>
+                <button className="btn btn-primary">Delete</button>
+              </>
             )}
-            <button className="btn btn-primary">Delete</button>
           </div>
         </div>
       </div>

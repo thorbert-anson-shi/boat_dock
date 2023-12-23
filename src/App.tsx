@@ -17,6 +17,7 @@ function App() {
 
   return (
     <>
+      <InfoPanel />
       <div className="parallax">
         <div className="hero parallax__layer--back">
           <h1 style={{ fontSize: "10rem" }}>waves</h1>
@@ -24,7 +25,6 @@ function App() {
             Manage your ships and make sure they're in ship shape!
           </h5>
         </div>
-        <InfoPanel />
 
         <div className="bg parallax__layer--base snap-anchor">
           <div className="wave">

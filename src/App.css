@@ -1,12 +1,23 @@
+html {
+    scroll-behavior: smooth;
+}
+
 #root {
     font-family: 'Ubuntu', sans-serif;
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
 }
+
+.snap-anchor {
+    scroll-snap-align: start;
+}
+
 .hero {
-    font-size: 5rem;
     text-align: center;
-    padding: 5rem;
-    background: linear-gradient(90deg, #6060bd 10%, #5050bd 50%, #6060bd 90%);
+    padding: 35vh 0;
+    background: #6060bd;
     color: white;
+    z-index: 0;
 }
 
 .parallax {
@@ -29,7 +40,7 @@
 }
 
 .parallax__layer--back {
-    transform: translateY(-35vh) translateZ(-1px) scale(2);
+    transform: translateZ(-1px) scale(2);
 }
 
 .row {
@@ -44,7 +55,7 @@
 }
 
 .card-body {
-    display:flex;
+    display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 1em;
@@ -56,6 +67,7 @@
 .container {
     min-width: 60%;
     height: inherit;
+    padding-top: 10%;
 }
 
 .card-title {
@@ -86,7 +98,27 @@
 .bg {
     width: 100%;
     height: 200vh;
-    background-color: rgb(220, 217, 199);
+    background-color: rgba(225, 216, 167);
     z-index: 10;
-    position:relative;
+    position: relative;
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 117px;
+}
+
+.wave .shape-fill {
+    fill: #6060bd;
 }

@@ -56,7 +56,7 @@ function App() {
           </div>
         </div>
       </div>
-      <script src="./assets/snippets.js"></script>
+      <script src="./assets/api_calls.ts"></script>
     </>
   );
 }

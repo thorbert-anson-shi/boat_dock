@@ -12,13 +12,6 @@ import CreateNewShip from "./components/CreateNewShip";
 import apiService from "./assets/api_calls";
 
 function App() {
-  // interface Item {
-  //   name: string;
-  //   bought_at: string;
-  //   updated_at: string;
-  //   description: string;
-  // }
-
   const [shipList, setShipList] = useState<Item[]>([]);
 
   const newShip: Item = {

@@ -15,6 +15,7 @@ function App() {
   const [shipList, setShipList] = useState<Item[]>([]);
 
   const newShip: Item = {
+    id: "123abc",
     name: "Thorbert",
     bought_at: "date1",
     updated_at: "date2",
@@ -59,12 +60,7 @@ function App() {
               {shipList.length > 0 &&
                 shipList.map((item) => (
                   <div className="col-md-3" key={item.name.toLowerCase()}>
-                    <Panel
-                      name={item.name.toUpperCase()}
-                      bought_at={item.bought_at}
-                      updated_at={item.updated_at}
-                      description={item.description}
-                    ></Panel>
+                    <Panel data={item}></Panel>
                   </div>
                 ))}
               {shipList.length == 0 && <h1>Nothing to see here...</h1>}

@@ -23,7 +23,7 @@ const apiService = {
       body: JSON.stringify(data)
     })
       .then((res) => res.json())
-      .then((data) => console.log(data.daftar_perahu));
+      .then((data) => { console.log(data.message) });
   },
 };
 

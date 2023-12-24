@@ -1,4 +1,5 @@
 interface Item {
+  id: string;
   name: string;
   bought_at: string;
   updated_at: string;

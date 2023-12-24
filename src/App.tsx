@@ -14,14 +14,14 @@ import apiService from "./assets/apiService";
 function App() {
   const [shipList, setShipList] = useState<Item[]>([]);
 
-  const handleCreate = (event: React.MouseEvent) => {
-    event.preventDefault();
+  const handleCreate = () => {
+    console.log(shipList.length);
     console.log("I have been created");
   };
 
   return (
     <>
-      <CreateNewShip />
+      <CreateNewShip shipList={shipList} />
       <InfoPanel />
       <div className="parallax">
         <div className="hero parallax__layer--back snap-anchor">
@@ -45,6 +45,7 @@ function App() {
               ></path>
             </svg>
           </div>
+
           <div className="container text-left">
             <div className="row row-cols-12 justify-content-center">
               {shipList.length > 0 &&
@@ -60,7 +61,7 @@ function App() {
               data-bs-toggle="modal"
               data-bs-target="#createShipModal"
               id="plus_button"
-              onClick={(event) => handleCreate(event)}
+              onClick={handleCreate}
             >
               <i className="fa fa-plus-square-o" aria-hidden="true"></i>
             </button>

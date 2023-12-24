@@ -1,16 +1,16 @@
-import { useState } from "react";
-import Item from "../interfaces/Item.tsx";
+import { useContext, useState } from "react";
+import Item from "../interfaces/Item.ts";
 import apiService from "../assets/apiService.ts";
 
 const InfoPanel = () => {
-  const [shipInfo, setShipInfo] = useState<Item>({
-    id: "123abc",
+  const [shipInfo, setShipInfo] = useState({
+    id: "",
     name: "",
     bought_at: "",
     updated_at: "",
     description: "",
     capacity: 0,
-    color: "RED",
+    color: "BLACK",
     is_sailing: false,
   });
 
@@ -100,7 +100,7 @@ const InfoPanel = () => {
               type="button"
               className="btn btn-primary"
               onClick={async () => {
-                await apiService.post("perahu", shipInfo);
+                await apiService.patch(`perahu/:${shipInfo.id}`, shipInfo);
               }}
             >
               Save changes

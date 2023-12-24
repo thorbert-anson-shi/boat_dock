@@ -16,9 +16,9 @@ const apiService = {
     const url = `${api_base_url}/${endpoint}`;
     fetch(url, {
       method: "POST",
-      headers: { Authorization: `Bearer ${access_token}` },
+      headers: { Authorization: `Bearer ${access_token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(sent_data)
-    });
+    }).then(res => res.json()).then(data => console.log(data));
   },
   patch: (endpoint: string, sent_data: object) => {
     const url = `${api_base_url}/${endpoint}`;

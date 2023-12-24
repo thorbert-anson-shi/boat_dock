@@ -6,15 +6,15 @@ interface Item {
   description: string;
   capacity: number;
   color:
-    | "RED"
-    | "ORANGE"
-    | "YELLOW"
-    | "GREEN"
-    | "BLUE"
-    | "INDIGO"
-    | "VIOLET"
-    | "WHITE"
-    | "BLACK";
+  | "RED"
+  | "ORANGE"
+  | "YELLOW"
+  | "GREEN"
+  | "BLUE"
+  | "INDIGO"
+  | "VIOLET"
+  | "WHITE"
+  | "BLACK";
   is_sailing: boolean;
 }
 

@@ -26,7 +26,7 @@ const InfoPanel = () => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              Modal title
+              Edit Ship Info
             </h1>
             <button
               type="button"
@@ -49,32 +49,6 @@ const InfoPanel = () => {
               }}
             />
             <br />
-            <label htmlFor="buyDateInput">Date bought: </label>
-            <input
-              id="buyDateInput"
-              type="date"
-              placeholder="bought at"
-              onChange={(event) => {
-                setShipInfo((prevShipInfo) => ({
-                  ...prevShipInfo,
-                  bought_at: event.target.value,
-                }));
-              }}
-            />
-            <br />
-            <label htmlFor="updateDateInput">Last updated: </label>
-            <input
-              id="updateDateInput"
-              type="date"
-              placeholder="updated at"
-              onChange={(event) => {
-                setShipInfo((prevShipInfo) => ({
-                  ...prevShipInfo,
-                  updated_at: event.target.value,
-                }));
-              }}
-            />
-            <br />
             <label htmlFor="descriptionInput">Description: </label>
             <input
               id="descriptionInput"
@@ -87,6 +61,43 @@ const InfoPanel = () => {
                 }));
               }}
             />
+            <br />
+            <label htmlFor="capacityInput">Capacity: </label>
+            <input
+              id="capacityInput"
+              type="number"
+              min="1"
+              max="1000"
+              placeholder="capacity"
+              onChange={(event) => {
+                setShipInfo((prevShipInfo) => ({
+                  ...prevShipInfo,
+                  capacity: event.target.valueAsNumber,
+                }));
+              }}
+            />
+            <br />
+            <label htmlFor="colorInput">Color: </label>
+            <select
+              name="colors"
+              id="colors"
+              onChange={(event) => {
+                setShipInfo((prevShipInfo) => ({
+                  ...prevShipInfo,
+                  color: event.target.value,
+                }));
+              }}
+            >
+              <option value="RED">Red</option>
+              <option value="ORANGE">Orange</option>
+              <option value="YELLOW">Yellow</option>
+              <option value="GREEN">Green</option>
+              <option value="BLUE">Blue</option>
+              <option value="INDIGO">Indigo</option>
+              <option value="VIOLET">Violet</option>
+              <option value="WHITE">White</option>
+              <option value="BLACK">Black</option>
+            </select>
           </div>
           <div className="modal-footer">
             <button

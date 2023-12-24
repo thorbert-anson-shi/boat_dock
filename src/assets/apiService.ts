@@ -16,9 +16,14 @@ const apiService = {
     const url = `${api_base_url}/${endpoint}`;
     return fetch(url, {
       method: "POST",
-      headers: { Authorization: `Bearer ${access_token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(sent_data)
-    }).then(res => { return res.json() });
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sent_data),
+    }).then((res) => {
+      return res.json();
+    });
   },
   patch: (endpoint: string, sent_data: object) => {
     const url = `${api_base_url}/${endpoint}`;
@@ -27,6 +32,13 @@ const apiService = {
       body: JSON.stringify(sent_data),
       headers: { Authorization: `Bearer ${access_token}` },
     });
+  },
+  delete: (endpoint: string) => {
+    const url = `${api_base_url}/${endpoint}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${access_token}` },
+    }).then((res) => console.log(res.json()));
   },
 };
 

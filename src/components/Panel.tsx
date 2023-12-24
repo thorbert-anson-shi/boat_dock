@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Item from "../interfaces/Item";
+import apiService from "../assets/apiService";
 
 interface Props {
   data: Item;
@@ -19,9 +20,9 @@ const Panel = ({ data }: Props) => {
 
           <div className="boat-info">
             <ul>
-              <li>Bought at: {data.bought_at}</li>
-              <li>Updated at: {data.updated_at}</li>
               <li>Description: {data.description}</li>
+              <li>Capacity: {data.capacity}</li>
+              <li>Color: {data.color}</li>
             </ul>
           </div>
 
@@ -40,7 +41,14 @@ const Panel = ({ data }: Props) => {
                 >
                   Edit
                 </button>
-                <button className="btn btn-primary">Delete</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    apiService.delete(`perahu/${data.id}`);
+                  }}
+                >
+                  Delete
+                </button>
               </>
             ) : null}
           </div>

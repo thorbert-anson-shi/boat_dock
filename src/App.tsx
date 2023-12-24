@@ -19,9 +19,12 @@ function App() {
     console.log("I have been created");
   };
 
+  const handleState = (shipInfo: Item) =>
+    setShipList((prevShipList) => [...prevShipList, shipInfo]);
+
   return (
     <>
-      <CreateNewShip shipList={shipList} />
+      <CreateNewShip change={handleState} />
       <InfoPanel />
       <div className="parallax">
         <div className="hero parallax__layer--back snap-anchor">

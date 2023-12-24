@@ -1,12 +1,17 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import apiService from "../assets/apiService";
+import Item from "../interfaces/Item";
 
-const CreateNewShip = () => {
+interface Props {
+  change: (shipInfo: Item) => void;
+}
+
+const CreateNewShip = ({ change }: Props) => {
   const [shipInfo, setShipInfo] = useState({
     name: "",
     description: "",
     capacity: 0,
-    color: "BLACK",
+    color: "RED",
   });
   return (
     <>
@@ -97,9 +102,15 @@ const CreateNewShip = () => {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => {
+                onClick={async () => {
                   console.log(shipInfo);
-                  apiService.post("perahu", shipInfo);
+                  const response = await apiService.post("perahu", shipInfo);
+                  if (response.statusCode == 400) {
+                    console.log("We need better inputs bois");
+                  } else {
+                    console.log(response.perahu);
+                  }
+                  change(response.perahu);
                 }}
               >
                 Save changes

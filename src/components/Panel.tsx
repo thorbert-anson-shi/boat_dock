@@ -35,7 +35,7 @@ const Panel = ({ data }: Props) => {
                   type="button"
                   className="btn btn-primary"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  data-bs-target="#infoPanelModal"
                   data-bs-whatever={data.id}
                 >
                   Edit

@@ -1,14 +1,10 @@
-html {
-    scroll-behavior: smooth;
-}
-
 #root {
     font-family: 'Ubuntu', sans-serif;
     scroll-snap-type: y mandatory;
 }
 
 .snap-anchor {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 .hero {
@@ -23,7 +19,7 @@ html {
     perspective: 1px;
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
 

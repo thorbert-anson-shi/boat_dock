@@ -1,13 +1,10 @@
 import { useState } from "react";
 import Item from "../interfaces/Item.tsx";
-import apiService from "../assets/api_calls.ts";
+import apiService from "../assets/apiService.ts";
 
-interface Props {
-  shipList: Item[];
-}
-
-const InfoPanel = ({ shipList }: Props) => {
+const InfoPanel = () => {
   const [shipInfo, setShipInfo] = useState<Item>({
+    id: "123abc",
     name: "",
     bought_at: "",
     updated_at: "",
@@ -16,12 +13,13 @@ const InfoPanel = ({ shipList }: Props) => {
     color: "RED",
     is_sailing: false,
   });
+
   return (
     <div
       className="modal fade"
-      id="exampleModal"
+      id="infoPanelModal"
       tabIndex={-1}
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="infoModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog">

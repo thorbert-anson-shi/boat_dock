@@ -5,25 +5,28 @@ const api_base_url = "https://oprec-betis-be.up.railway.app";
 const apiService = {
   get: (endpoint: string) => {
     const url = `${api_base_url}/${endpoint}`;
-    return fetch(url, {
+    fetch(url, {
       method: "GET",
       headers: { Authorization: `Bearer ${access_token}` },
     })
       .then((res) => res.json())
-      .then(data => data)
+      .then((data) => console.log(data));
   },
-  post: (endpoint: string, data: object) => {
+  post: (endpoint: string, sent_data: object) => {
     const url = `${api_base_url}/${endpoint}`;
-    return fetch(url, {
+    fetch(url, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data)
-    })
-      .then((res) => res.json())
-      .then((data) => { console.log(data.message) });
+      headers: { Authorization: `Bearer ${access_token}` },
+      body: JSON.stringify(sent_data)
+    });
+  },
+  patch: (endpoint: string, sent_data: object) => {
+    const url = `${api_base_url}/${endpoint}`;
+    fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(sent_data),
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
   },
 };
 

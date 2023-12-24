@@ -7,32 +7,22 @@ import InfoPanel from "./components/InfoPanel";
 import Panel from "./components/Panel";
 import Item from "./interfaces/Item";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateNewShip from "./components/CreateNewShip";
-import apiService from "./assets/api_calls";
+import apiService from "./assets/apiService";
 
 function App() {
   const [shipList, setShipList] = useState<Item[]>([]);
 
-  const newShip: Item = {
-    id: "123abc",
-    name: "Thorbert",
-    bought_at: "date1",
-    updated_at: "date2",
-    description: "big boat",
-    color: "BLACK",
-    capacity: 100,
-    is_sailing: false,
+  const handleCreate = (event: React.MouseEvent) => {
+    event.preventDefault();
+    console.log("I have been created");
   };
 
-  useEffect(() => {
-    setShipList(shipList.concat(newShip));
-    console.log(apiService.get("perahu"));
-  }, []);
   return (
     <>
       <CreateNewShip />
-      <InfoPanel shipList={shipList} />
+      <InfoPanel />
       <div className="parallax">
         <div className="hero parallax__layer--back snap-anchor">
           <h1 style={{ fontSize: "10rem" }}>waves</h1>
@@ -59,19 +49,24 @@ function App() {
             <div className="row row-cols-12 justify-content-center">
               {shipList.length > 0 &&
                 shipList.map((item) => (
-                  <div className="col-md-3" key={item.name.toLowerCase()}>
+                  <div className="col-md-3" key={item.id}>
                     <Panel data={item}></Panel>
                   </div>
                 ))}
               {shipList.length == 0 && <h1>Nothing to see here...</h1>}
             </div>
-            <button id="plus_button">
-              <i className="fa fa-plus-square-o"></i>
+            <button
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#createShipModal"
+              id="plus_button"
+              onClick={(event) => handleCreate(event)}
+            >
+              <i className="fa fa-plus-square-o" aria-hidden="true"></i>
             </button>
           </div>
         </div>
       </div>
-      {/* <script src="./assets/api_calls.ts"></script> */}
     </>
   );
 }

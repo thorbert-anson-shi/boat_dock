@@ -3,8 +3,8 @@ import Item from "../interfaces/Item";
 
 const CreateNewShip = () => {
   return (
-    <div>
-      <div className="modal fade" tabIndex={-1}>
+    <>
+      <div className="modal fade" tabIndex={-1} id="createShipModal">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -32,7 +32,7 @@ const CreateNewShip = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,25 +1,46 @@
-import Panel from "./components/Panel";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 
 import "./App.css";
+
 import InfoPanel from "./components/InfoPanel";
+import Panel from "./components/Panel";
+import Item from "./interfaces/Item";
+
+import { useEffect, useState } from "react";
+import CreateNewShip from "./components/CreateNewShip";
+import apiService from "./assets/api_calls";
 
 function App() {
-  let items = [
-    {
-      name: "Thorbert",
-      bought_at: "24/5/2005",
-      updated_at: "30/4/2023",
-      description: "big phat boat",
-    },
-  ];
+  // interface Item {
+  //   name: string;
+  //   bought_at: string;
+  //   updated_at: string;
+  //   description: string;
+  // }
 
+  const [shipList, setShipList] = useState<Item[]>([]);
+
+  const newShip: Item = {
+    name: "Thorbert",
+    bought_at: "date1",
+    updated_at: "date2",
+    description: "big boat",
+    color: "BLACK",
+    capacity: 100,
+    is_sailing: false,
+  };
+
+  useEffect(() => {
+    setShipList(shipList.concat(newShip));
+    console.log(apiService.get("perahu"));
+  }, []);
   return (
     <>
-      <InfoPanel />
+      <CreateNewShip />
+      <InfoPanel shipList={shipList} />
       <div className="parallax">
-        <div className="hero parallax__layer--back">
+        <div className="hero parallax__layer--back snap-anchor">
           <h1 style={{ fontSize: "10rem" }}>waves</h1>
           <h5 style={{ fontSize: "4rem" }}>
             Manage your ships and make sure they're in ship shape!
@@ -42,21 +63,26 @@ function App() {
           </div>
           <div className="container text-left">
             <div className="row row-cols-12 justify-content-center">
-              {items.map((item) => (
-                <div className="col-md-3" key={item.name.toLowerCase()}>
-                  <Panel
-                    name={item.name.toUpperCase()}
-                    bought_at={item.bought_at}
-                    updated_at={item.updated_at}
-                    description={item.description}
-                  ></Panel>
-                </div>
-              ))}
+              {shipList.length > 0 &&
+                shipList.map((item) => (
+                  <div className="col-md-3" key={item.name.toLowerCase()}>
+                    <Panel
+                      name={item.name.toUpperCase()}
+                      bought_at={item.bought_at}
+                      updated_at={item.updated_at}
+                      description={item.description}
+                    ></Panel>
+                  </div>
+                ))}
+              {shipList.length == 0 && <h1>Nothing to see here...</h1>}
             </div>
+            <button id="plus_button">
+              <i className="fa fa-plus-square-o"></i>
+            </button>
           </div>
         </div>
       </div>
-      <script src="./assets/api_calls.ts"></script>
+      {/* <script src="./assets/api_calls.ts"></script> */}
     </>
   );
 }

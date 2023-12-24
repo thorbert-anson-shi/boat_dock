@@ -38,7 +38,9 @@ const InfoPanel = ({ shipList }: Props) => {
             ></button>
           </div>
           <div className="modal-body">
+            <label htmlFor="nameInput">Name: </label>
             <input
+              id="nameInput"
               type="text"
               placeholder="name"
               onChange={(event) => {
@@ -48,8 +50,11 @@ const InfoPanel = ({ shipList }: Props) => {
                 }));
               }}
             />
+            <br />
+            <label htmlFor="buyDateInput">Date bought: </label>
             <input
-              type="text"
+              id="buyDateInput"
+              type="date"
               placeholder="bought at"
               onChange={(event) => {
                 setShipInfo((prevShipInfo) => ({
@@ -58,8 +63,11 @@ const InfoPanel = ({ shipList }: Props) => {
                 }));
               }}
             />
+            <br />
+            <label htmlFor="updateDateInput">Last updated: </label>
             <input
-              type="text"
+              id="updateDateInput"
+              type="date"
               placeholder="updated at"
               onChange={(event) => {
                 setShipInfo((prevShipInfo) => ({
@@ -68,7 +76,10 @@ const InfoPanel = ({ shipList }: Props) => {
                 }));
               }}
             />
+            <br />
+            <label htmlFor="descriptionInput">Description: </label>
             <input
+              id="descriptionInput"
               type="text"
               placeholder="description"
               onChange={(event) => {

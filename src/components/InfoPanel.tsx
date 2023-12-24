@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import Item from "../interfaces/Item.ts";
+import { useState } from "react";
 import apiService from "../assets/apiService.ts";
 
 const InfoPanel = () => {

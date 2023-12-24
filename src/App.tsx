@@ -7,9 +7,8 @@ import InfoPanel from "./components/InfoPanel";
 import Panel from "./components/Panel";
 import Item from "./interfaces/Item";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import CreateNewShip from "./components/CreateNewShip";
-import apiService from "./assets/apiService";
 
 function App() {
   const [shipList, setShipList] = useState<Item[]>([]);
